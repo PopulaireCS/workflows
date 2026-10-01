@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ALUR KERJA POPULAIRE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+ --bg:#111417;--panel:#1A1F23;--line:#2A3036;--ink:#ECEFF1;--mute:#9AA4AC;--grey:#3A4045;--greyink:#B9C1C7;
+ --cond:"Barlow Condensed","Arial Narrow",sans-serif;--body:"Barlow",system-ui,sans-serif}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#F3F4F2;--panel:#FFFFFF;--line:#DADDE0;--ink:#15191C;--mute:#5E676E;--grey:#D5D9DC;--greyink:#4A5258}}
+:root[data-theme="dark"]{--bg:#111417;--panel:#1A1F23;--line:#2A3036;--ink:#ECEFF1;--mute:#9AA4AC;--grey:#3A4045;--greyink:#B9C1C7}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.5}
+.wrap{max-width:880px;margin:0 auto;padding:28px 18px 64px}
+h1{font-family:var(--cond);font-weight:800;font-size:clamp(44px,11vw,84px);line-height:.92;letter-spacing:.01em;margin:0}
+.lede{color:var(--mute);font-size:17px;max-width:60ch;margin:14px 0 22px}
+.cast{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 34px}
+.lab{font-family:var(--cond);font-weight:700;font-size:14px;letter-spacing:.04em;padding:6px 12px;border-radius:7px;line-height:1.1}
+.phase{margin:30px 0 10px;display:flex;align-items:baseline;gap:12px}
+.phase h2{font-family:var(--cond);font-weight:800;font-size:28px;margin:0;letter-spacing:.02em}
+.phase span{color:var(--mute);font-size:15px}
+.grid{display:grid;gap:12px}
+@media (min-width:700px){.grid{grid-template-columns:1fr 1fr}}
+a.card{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:12px;padding:16px 16px 14px;transition:transform .12s ease,border-color .12s ease}
+a.card:hover,a.card:focus-visible{transform:translateY(-2px);border-color:var(--c);outline:none}
+.num{font-family:var(--cond);font-weight:800;font-size:15px;color:var(--mute);letter-spacing:.06em}
+.card h3{font-family:var(--cond);font-weight:800;font-size:27px;line-height:1.02;margin:2px 0 6px;letter-spacing:.01em}
+.card p{margin:0 0 12px;color:var(--mute);font-size:15px}
+.who{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.who .lab{font-size:12px;padding:4px 8px;border-radius:6px}
+.meta{margin-left:auto;font-family:var(--cond);font-weight:700;font-size:14px;color:var(--ink);white-space:nowrap}
+details{margin-top:40px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px 16px}
+summary{font-family:var(--cond);font-weight:800;font-size:24px;cursor:pointer;padding:12px 0;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+ ";color:var(--mute)}
+details[open] summary::before{content:"\2212  "}
+.key{display:grid;gap:12px;padding:4px 0 18px}
+.row{display:flex;align-items:center;gap:14px}
+.row .ex{flex:0 0 118px;display:flex;justify-content:center}
+.row .tx{font-size:15px}
+.tag{font-family:var(--cond);font-weight:700;font-size:14px;letter-spacing:.04em;color:#fff;width:96px;height:32px;display:flex;align-items:center;justify-content:center;position:relative}
+.send{background:#6D3FC0;clip-path:polygon(0 0,84% 0,100% 50%,84% 100%,0 100%)}
+.pill{background:#1E7A34;border-radius:16px}
+.grey{background:var(--grey);color:var(--greyink);border-radius:7px}
+.trk{background:var(--grey);color:var(--greyink);border-radius:7px;padding-left:26px}
+.trk i{position:absolute;left:-6px;top:-1px;width:34px;height:34px;border-radius:50%;background:#C62828;display:flex;align-items:center;justify-content:center}
+.bdg{position:absolute;right:8px;top:7px;width:18px;height:18px}
+.doc{width:30px;height:38px}
+.dash{width:96px;height:4px;background:repeating-linear-gradient(90deg,#C62828 0 9px,transparent 9px 15px)}
+.foot{color:var(--mute);font-size:13px;margin-top:28px}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <h1>ALUR KERJA POPULAIRE</h1>
+ <p class="lede">Enam alur kerja, urut sesuai jalannya proyek. Buka satu alur, lalu tekan Berikutnya untuk melihat setiap langkah.</p>
+ <div class="cast" id="cast"></div>
+
+ <div class="phase"><h2>STRUKTUR</h2><span>dari GO sampai lapangan</span></div>
+ <div class="grid" id="g1"></div>
+
+ <div class="phase"><h2>FINISHING</h2><span>dari FINSPEC sampai barang dipesan</span></div>
+ <div class="grid" id="g2"></div>
+
+ <div class="phase"><h2>SEPANJANG PROYEK</h2><span>kapan saja ada perubahan berbiaya</span></div>
+ <div class="grid" id="g3"></div>
+
+ <details>
+  <summary>Cara membaca</summary>
+  <div class="key" id="key"></div>
+ </details>
+ <p class="foot">Warna = orang. Bentuk label = tugasnya. Setiap alur punya halaman Ringkasan di akhir.</p>
+</div>
+<script>
+const P={CYRUS:['#1F2F6B','#fff'],SETYO:['#6D3FC0','#fff'],BEN:['#2F7FE0','#fff'],ANDI:['#0E8A8A','#fff'],ADI:['#F07D1A','#1a1000'],AWENG:['#1E7A34','#fff'],ARIEF:['#C62828','#fff'],RADHIT:['#8B5A2B','#fff'],PENGAWAS:['#E8B81E','#2b2100'],WAKIL:['#F6E3A1','#2b2100'],KHOIRUL:['#AD1457','#fff'],RIRIN:['#00ACC1','#00262b'],OWNER:['#E0458B','#fff']};
+const lab=(n)=>`<span class="lab" style="background:${P[n][0]};color:${P[n][1]}">${n}</span>`;
+document.getElementById('cast').innerHTML=Object.keys(P).map(lab).join('');
+const W=[
+ {g:'g1',n:1,t:'MULAI BANGUN | STRUKTUR',d:'Dari GO Pak CYRUS sampai Pak BEN mulai gambar kerja struktur.',s:10,c:'CYRUS',who:['CYRUS','SETYO','BEN','ANDI','ADI','AWENG'],u:'mulai-bangun-struktur.html'},
+ {g:'g1',n:2,t:'GAMBAR KERJA | STRUKTUR',d:'Gambar kerja struktur dari Pak BEN, review, sampai PROYEK XXX.',s:5,c:'BEN',who:['BEN','AWENG','SETYO','PENGAWAS'],u:'gambar-kerja-struktur.html'},
+ {g:'g2',n:3,t:'FINSPEC',d:'FINSPEC dari Pak ADI, review Pak SETYO, sampai grup XXX | PO SBO dibuat.',s:5,c:'ADI',who:['ADI','SETYO','CYRUS'],u:'finspec.html'},
+ {g:'g2',n:4,t:'GAMBAR KERJA | FINISHING',d:'Gambar kerja finishing dari Pak ADI, persetujuan OWNER, sampai PROYEK XXX.',s:8,c:'ADI',who:['ADI','AWENG','SETYO','OWNER','ARIEF','PENGAWAS'],u:'gambar-kerja-finishing.html'},
+ {g:'g2',n:5,t:'SBO | ORDER',d:'Order barang SBO, sederhana atau kompleks, sampai OWNER bayar dan lapangan dikabari.',s:'10 / 12',c:'ARIEF',who:['ARIEF','PENGAWAS','KHOIRUL','RIRIN','CYRUS','RADHIT','OWNER'],u:'sbo-order.html'},
+ {g:'g3',n:6,t:'VARIASI | PERSETUJUAN',d:'Dari CHANGE IMPACT REPORT sampai lapangan boleh lanjut.',s:7,c:'RADHIT',who:['RADHIT','CYRUS','OWNER','ARIEF'],u:'variasi-persetujuan.html'}
+];
+W.forEach(w=>{document.getElementById(w.g).insertAdjacentHTML('beforeend',
+ `<a class="card" href="${w.u}" style="--c:${P[w.c][0]}">
+   <div class="num">ALUR ${w.n}</div><h3>${w.t}</h3><p>${w.d}</p>
+   <div class="who">${w.who.map(lab).join('')}<span class="meta">${w.s} langkah &rarr;</span></div></a>`);});
+const chk=`<svg class="bdg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#111417"/><path d="M28,52 L43,67 L73,34" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const usd=`<svg class="bdg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#111417"/><text x="50" y="71" text-anchor="middle" font-family="Barlow Condensed,Arial Narrow,sans-serif" font-weight="800" font-size="66" fill="#fff">$</text></svg>`;
+const clock=`<i><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M12 12V7M12 12l4 2.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></i>`;
+const doc=`<svg class="doc" viewBox="0 0 30 38"><path d="M2 1h18l8 8v28H2z" fill="#F07D1A"/><path d="M20 1v8h8" fill="#c4600f"/><path d="M7 18h16M7 24h16M7 30h12" stroke="#fff" stroke-width="2.2"/></svg>`;
+const K=[
+ [`<div class="tag send">SETYO</div>`,'Label runcing = mengirim. Ujungnya menunjuk arah kiriman.'],
+ [`<div class="tag pill">AWENG</div>`,'Label bulat = sedang review.'],
+ [`<div class="tag grey">CYRUS</div>`,'Abu-abu = anggota grup, tidak ada tugas di langkah ini.'],
+ [`<div class="tag trk">${clock}ARIEF</div>`,'Jam merah = Pak ARIEF memantau dan mengingatkan.'],
+ [`<div class="tag grey" style="padding-right:22px">SETYO${chk}</div>`,'Tanda centang = sudah disetujui.'],
+ [`<div class="tag grey" style="padding-right:22px">OWNER${usd}</div>`,'Tanda $ = OWNER sudah bayar.'],
+ [doc,'Dokumen = file baru masuk ke WhatsApp, warna pembuatnya.'],
+ [`<div class="dash"></div>`,'Garis putus-putus = pesan atau instruksi, bukan file.']
+];
+document.getElementById('key').innerHTML=K.map(([e,t])=>`<div class="row"><div class="ex">${e}</div><div class="tx">${t}</div></div>`).join('');
+</script>
+</body>
+</html>
